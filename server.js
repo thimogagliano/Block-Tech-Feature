@@ -29,6 +29,17 @@ const app = express()
     //res.send("Hello World!")
 //})
 
+//error handling
+app.get('/', (req, res, next) => {
+    FileSystem.readFile('/file-does-not-exist', (err, data) => {
+        if (err) {
+            next(err) //errors naar Express sturen    
+        } else {
+            res.send(data)
+        }
+    })
+})
+
 // pad naar de about pagina
 app.get('/about', (req, res) => {
     res.send("about")
@@ -45,6 +56,7 @@ app.get('/registreren', (req, res) => {
   })
 
 app.use('/static', express.static('static'))
+
 
 
 
