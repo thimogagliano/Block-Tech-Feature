@@ -44,11 +44,12 @@ app.get('/registreren', (req, res) => {
    res.send("registreren")
   })
 
+app.use(express.static('static'))
 //pad naar de profiel pagina
 //app.get('/profiel', (req, res) => {
     //res.send("profiel")
   //})
 
 
-//gebruiken van de static files door express
+//luisteren naar een port
 app.listen(3000);
