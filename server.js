@@ -44,7 +44,7 @@ app.get('/registreren', (req, res) => {
    res.send("registreren")
   })
 
-app.use(express.static('/static'))
+app.use('/static', express.static('static'))
 
 
 
