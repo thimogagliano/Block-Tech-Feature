@@ -1,18 +1,19 @@
 const express = require('express');
 
-//const app = express()
+const app = express()
 
 //const res = require('express/lib/response');
 
-express()
-    .get('/', onhome)
-    .listen(3000)
+// express()
+//     .get('/', onhome)
+//     .listen(3000)
 
 
+// function onhome(req, res) {
+//     res.send('<h1>Hello CLient</h1>\n')
+// }
 
-function onhome(req, res) {
-    res.send('<h1>Hello CLient</h1>\n')
-}
+
 //var http = require('http');
 //http.createServer(function (req, res) {
 //res.writeHead(200, {'Content-Type': 'text/html'});
@@ -29,9 +30,9 @@ function onhome(req, res) {
 //})
 
 // pad naar de about pagina
-//app.get('/about', (req, res) => {
-    //res.send("about")
-//})
+app.get('/about', (req, res) => {
+    res.send("about")
+})
 
 //pad naar de login pagina
 //app.get('/login', (req, res) => {
@@ -50,4 +51,4 @@ function onhome(req, res) {
 
 
 //gebruiken van de static files door express
-//app.use('/static', express.static('public'));
+app.listen(3000);
