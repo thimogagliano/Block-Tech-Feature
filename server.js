@@ -31,7 +31,7 @@ const app = express()
 
 //error handling
 app.get('/', (req, res, next) => {
-    FileSystem.readFile('/file-does-not-exist', (err, data) => {
+    FileSystem.readFile('/', (err, data) => {
         if (err) {
             next(err) //errors naar Express sturen    
         } else {
