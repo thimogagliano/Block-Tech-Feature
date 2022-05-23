@@ -2,6 +2,8 @@ var http = require('http');
 http.createServer(function (req, res) {
 res.writeHead(200, {'Content-Type': 'text/html'});
 res.end('Hello World!');
+//gebruiken van de static files door express
+app.use('/static', express.static('public'));
 }).listen(3000);
 
 const express = require('express');
@@ -34,5 +36,4 @@ app.get('/profiel', (req, res) => {
   })
 
 
-//gebruiken van de static files door express
-app.use('/static', express.static('public'));
+
