@@ -15,20 +15,20 @@ app.get('/', (req, res) => {
 
 // pad naar de about pagina
 app.get('/about', (req, res) => {
-    res.send('about')
+    res.send("about")
 })
 
 //pad naar de login pagina
 app.get('/login', (req, res) => {
-    res.send('login')
+    res.send("login")
   })
 
 //pad naar de registreren pagina
 app.get('/registreren', (req, res) => {
-    res.send('registreren')
+    res.send("registreren")
   })
 
 //pad naar de profiel pagina
 app.get('/profiel', (req, res) => {
-    res.send('profiel')
+    res.send("profiel")
   })
