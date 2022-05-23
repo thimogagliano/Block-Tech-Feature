@@ -30,15 +30,10 @@ const app = express()
 //})
 
 //error handling
-app.get('/', (req, res, next) => {
-    FileSystem.readFile('/', (err, data) => {
-        if (err) {
-            next(err) //errors naar Express sturen    
-        } else {
-            res.send(data)
-        }
-    })
-})
+app.use((err, req, res, next) => {
+    console.error(err.stack)
+    res.status(500).send('Something broke!')
+  })
 
 // pad naar de about pagina
 app.get('/about', (req, res) => {
