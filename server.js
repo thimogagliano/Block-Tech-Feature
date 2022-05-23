@@ -32,3 +32,7 @@ app.get('/registreren', (req, res) => {
 app.get('/profiel', (req, res) => {
     res.send("profiel")
   })
+
+
+//gebruiken van de static files door express
+app.use('/static', express.static('public'));
