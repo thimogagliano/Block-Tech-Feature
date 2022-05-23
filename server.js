@@ -35,14 +35,14 @@ app.get('/about', (req, res) => {
 })
 
 //pad naar de login pagina
-//app.get('/login', (req, res) => {
-    //res.send("login")
-  //})
+app.get('/login', (req, res) => {
+    res.send("login")
+  })
 
 //pad naar de registreren pagina
-//app.get('/registreren', (req, res) => {
-   //res.send("registreren")
-  //})
+app.get('/registreren', (req, res) => {
+   res.send("registreren")
+  })
 
 //pad naar de profiel pagina
 //app.get('/profiel', (req, res) => {
