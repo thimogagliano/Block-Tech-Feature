@@ -1,8 +1,14 @@
 const express = require('express');
 
+//const app = express()
+
+//const res = require('express/lib/response');
+
 express()
     .get('/', onhome)
     .listen(3000)
+
+
 
 function onhome(req, res) {
     res.send('<h1>Hello CLient</h1>\n')
@@ -14,34 +20,34 @@ function onhome(req, res) {
 //}).listen(3000);
 
 
-const res = require('express/lib/response');
-const app = express()
+
+
 
 // responds with "Hello World!" wanneer er een get request wordt gedaan naar de homepage
-app.get('/', (req, res) => {
-    res.send("Hello World!")
-})
+//app.get('/', (req, res) => {
+    //res.send("Hello World!")
+//})
 
 // pad naar de about pagina
-app.get('/about', (req, res) => {
-    res.send("about")
-})
+//app.get('/about', (req, res) => {
+    //res.send("about")
+//})
 
 //pad naar de login pagina
-app.get('/login', (req, res) => {
-    res.send("login")
-  })
+//app.get('/login', (req, res) => {
+    //res.send("login")
+  //})
 
 //pad naar de registreren pagina
-app.get('/registreren', (req, res) => {
-    res.send("registreren")
-  })
+//app.get('/registreren', (req, res) => {
+   //res.send("registreren")
+  //})
 
 //pad naar de profiel pagina
-app.get('/profiel', (req, res) => {
-    res.send("profiel")
-  })
+//app.get('/profiel', (req, res) => {
+    //res.send("profiel")
+  //})
 
 
 //gebruiken van de static files door express
-app.use('/static', express.static('public'));
+//app.use('/static', express.static('public'));
