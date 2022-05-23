@@ -45,6 +45,13 @@ app.get('/registreren', (req, res) => {
   })
 
 app.use(express.static('static'))
+
+//catchen van erros
+app.get('/', (req, res) => {
+    throw new Error('BROKEN') // Express will catch this on its own.
+  })
+
+
 //pad naar de profiel pagina
 //app.get('/profiel', (req, res) => {
     //res.send("profiel")
