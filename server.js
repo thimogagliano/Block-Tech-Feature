@@ -2,8 +2,6 @@ const express = require('express');
 
 const app = express()
 
-const pug = require('pug');
-
 //const res = require('express/lib/response');
 
 // express()
