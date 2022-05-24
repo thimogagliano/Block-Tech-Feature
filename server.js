@@ -24,7 +24,6 @@ const pug = require('pug')
 
 //error handling
 app.use((req, res, next) => {
-    console.error(err,stack)
     res.status(404).send('Sorry!, Page Not Found!')
 })
 
