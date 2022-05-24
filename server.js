@@ -30,8 +30,6 @@ app.use((req, res, next) => {
 
 
 
-app.set('views', './views')
-
 app.set('view engine', 'pug')
 
 app.get('/', (req, res) => {
