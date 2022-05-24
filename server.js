@@ -48,8 +48,7 @@ app.get('/registreren', (req, res) => {
 app.use('/static', express.static('static'))
 
 //error handling
-app.use((err, req, res, next) => {
-    console.error(err.stack)
+app.use((req, res, next) => {
     res.status(404).send('Sorry!, Page Not Found!')
   })
 
