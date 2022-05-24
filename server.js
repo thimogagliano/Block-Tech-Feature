@@ -2,6 +2,8 @@ const express = require('express');
 
 const app = express()
 
+const pug = require('pug')
+
 
 // pad naar de about pagina
 app.get('/about', (req, res) => {
