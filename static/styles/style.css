@@ -17,6 +17,10 @@ body {
   letter-spacing: 1px;
 }
 
+header {
+  background-color: black;
+}
+
 .login-form {
   width: 60%;
   margin: auto;
