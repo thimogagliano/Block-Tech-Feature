@@ -2,7 +2,7 @@ const express = require('express');
 
 const app = express()
 
-const pug = require('pug')
+const pug = require('ejs')
 
 
 // pad naar de about pagina
@@ -28,18 +28,18 @@ app.use('/static', express.static('static'))
 
 
 
-app.set('view engine', 'pug')
+app.set('view engine', 'ejs')
 
 app.get('/', (req, res) => {
-    res.render('home', { title: 'home', message: 'Hoi!, dit is de homepagina' })
+    res.render('home')
 })
 
 app.get('/voorkeur', (req, res) => {
-    res.render('voorkeur', { title: 'voorkeur', message: 'Hoi!, dit is de voorkeurpagina' })
+    res.render('voorkeur')
 })
 
 app.get('/resultaten', (req, res) => {
-    res.render('resultaten', { title: 'resulaten', message: 'Hoi!, dit is de resultatenpagina' })
+    res.render('resultaten')
 })
 
 //error handling
