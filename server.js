@@ -29,11 +29,6 @@ const app = express()
     //res.send("Hello World!")
 //})
 
-//error handling
-//app.use((err, req, res, next) => {
-    //console.error(err.stack)
-    //res.status(400).send('Something broke!')
-  //})
 
 // pad naar de about pagina
 app.get('/about', (req, res) => {
@@ -52,7 +47,11 @@ app.get('/registreren', (req, res) => {
 
 app.use('/static', express.static('static'))
 
-
+//error handling
+app.use((err, req, res, next) => {
+    console.error(err.stack)
+    res.status(404).send('Sorry!, Page Not Found!')
+  })
 
 
 
