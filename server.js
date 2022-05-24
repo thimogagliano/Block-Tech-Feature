@@ -31,7 +31,7 @@ app.use('/static', express.static('static'))
 app.set('view engine', 'pug')
 
 app.get('/', (req, res) => {
-    res.render('home', { title: 'home', message: 'Hello there!' })
+    res.render('home', { title: 'Hey', message: 'Hello there!' })
 })
 
 app.get('/voorkeur', (req, res) => {
