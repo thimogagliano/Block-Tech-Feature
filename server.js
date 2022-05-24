@@ -22,10 +22,8 @@ const pug = require('pug')
 
 //app.use('/static', express.static('static'))
 
-//error handling
-app.use((req, res, next) => {
-    res.status(404).send('Sorry!, Page Not Found!')
-})
+
+
 
 
 
@@ -36,7 +34,10 @@ app.get('/', (req, res) => {
     res.render('index', { title: 'Hey', message: 'Hello there!' })
 })
 
-
+//error handling
+app.use((req, res, next) => {
+    res.status(404).send('Sorry!, Page Not Found!')
+})
 
 //luisteren naar een port
 app.listen(3000);
