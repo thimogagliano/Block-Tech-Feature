@@ -8,3 +8,17 @@ Mijn concept gaat over het vinden van festivals/evenementen op basis van je voor
 
 * Link naar de LICENSE: 
 [LICENSE](https://github.com/thimogagliano/Block-Tech-Feature/blob/main/LICENSE.md)
+
+
+## Gebruikte bronnen
+Voor het maken van static files
+* https://expressjs.com/en/starter/static-files.html
+Voor het toevoegen van een error handler in de server.js met behulp van express
+* https://expressjs.com/en/guide/error-handling.html
+* https://www.youtube.com/watch?v=jqnYt6jCrOQ
+Voor het gebruiken van de templating engine van pug
+* https://pugjs.org/api/getting-started.html
+Voor het gebruiken van een templating engine met epress.js
+* http://expressjs.com/en/guide/using-template-engines.html
+* https://www.youtube.com/watch?v=DpkbM1PD9Eo
+* https://levelup.gitconnected.com/render-dynamic-content-in-nodejs-using-templates-a58cae681148
