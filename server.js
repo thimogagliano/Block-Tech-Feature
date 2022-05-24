@@ -1,17 +1,30 @@
 const express = require('express')
-
 const app = express()
-
 const ejs = require('ejs')
-const { includes } = require('lodash')
+const bodyParser = require('body-parser')
+const path = require('path')
 
+app.use(bodyParser.urlencoded({ extended: false }))
 app.use('/static', express.static('static'))
 app.set('view engine', 'ejs')
+
+
 
 app.get('/', (req, res) => {
     res.render('index')
 })
 
+app.post('/login', (req,res) => {
+    const { name, password } = req.body;
+
+    if (name === 'admin' && password === 'admin') {
+        res.render('success', {
+            username: name,
+        })
+    } else {
+        res.render('failure')
+    }
+})
 
 //error handling
 app.use((req, res, next) => {
