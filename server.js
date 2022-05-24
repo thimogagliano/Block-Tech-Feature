@@ -30,10 +30,10 @@ const app = express()
 //})
 
 //error handling
-app.use((err, req, res, next) => {
-    console.error(err.stack)
-    res.status(400).send('Something broke!')
-  })
+//app.use((err, req, res, next) => {
+    //console.error(err.stack)
+    //res.status(400).send('Something broke!')
+  //})
 
 // pad naar de about pagina
 app.get('/about', (req, res) => {
