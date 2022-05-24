@@ -11,19 +11,19 @@ app.use('/static', express.static('static'))
 app.set('view engine', 'ejs')
 
 // pad naar de about pagina
-app.get('/about', (req, res) => {
-    res.send("about")
-})
+//app.get('/about', (req, res) => {
+    //res.send("about")
+//})
 
 //pad naar de login pagina
-app.get('/login', (req, res) => {
-    res.send("login")
-})
+//app.get('/login', (req, res) => {
+    //res.send("login")
+//})
 
 //pad naar de registreren pagina
-app.get('/registreren', (req, res) => {
-   res.send("registreren")
-})
+//app.get('/registreren', (req, res) => {
+   //res.send("registreren")
+//})
 
 
 
