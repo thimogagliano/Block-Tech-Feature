@@ -11,10 +11,14 @@ app.set('view engine', 'ejs')
 
 
 app.get('/', (req, res) => {
-    res.render('index')
+    res.render('home')
 })
 
-app.post('/login', (req,res) => {
+app.get('/login', (req, res) => {
+    res.render('login')
+})
+
+app.post('/login', (req, res) => {
     const { name, password } = req.body;
 
     if (name === 'admin' && password === 'admin') {
