@@ -1,9 +1,14 @@
-const express = require('express');
+const express = require('express')
 
 const app = express()
 
-const pug = require('ejs')
+const ejs = require('ejs')
 
+const bodyParser = require('body-parser')
+
+app.use(bodyParser.urlencoded({ extended: false}))
+app.use('/static', express.static('static'))
+app.set('view engine', 'ejs')
 
 // pad naar de about pagina
 app.get('/about', (req, res) => {
@@ -20,15 +25,8 @@ app.get('/registreren', (req, res) => {
    res.send("registreren")
 })
 
-app.use('/static', express.static('static'))
 
 
-
-
-
-
-
-app.set('view engine', 'ejs')
 
 app.get('/', (req, res) => {
     res.render('home')
@@ -41,6 +39,27 @@ app.get('/voorkeur', (req, res) => {
 app.get('/resultaten', (req, res) => {
     res.render('resultaten')
 })
+
+
+
+app.get('/', (req,res) => {
+    res.render('index');
+});
+
+app.post('/login', (req,res) => {
+    const {name, password } = req.body;
+
+    if (name === 'admin' && password === 'admin') {
+        res.render('succes', {
+            username: name,
+        });
+    } else {
+        res.render('failure');
+    }
+});
+
+
+
 
 //error handling
 app.use((req, res, next) => {
