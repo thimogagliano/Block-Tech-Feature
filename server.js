@@ -31,15 +31,15 @@ app.use('/static', express.static('static'))
 app.set('view engine', 'pug')
 
 app.get('/', (req, res) => {
-    res.render('home', { title: 'Hey', message: 'Hello there!' })
+    res.render('home', { title: 'home', message: 'Hoi!, dit is de homepagina' })
 })
 
 app.get('/voorkeur', (req, res) => {
-    res.render('voorkeur', { title: 'voorkeur', message: 'Hello there!' })
+    res.render('voorkeur', { title: 'voorkeur', message: 'Hoi!, dit is de voorkeurpagina' })
 })
 
 app.get('/resultaten', (req, res) => {
-    res.render('resultaten', { title: 'resulaten', message: 'Hello there!' })
+    res.render('resultaten', { title: 'resulaten', message: 'Hoi!, dit is de resultatenpagina' })
 })
 
 //error handling
