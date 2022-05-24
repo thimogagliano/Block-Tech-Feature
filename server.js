@@ -4,8 +4,6 @@ const app = express()
 
 const pug = require('pug');
 
-//compile the source code
-const compiledFunction = pug.compileFile('template.pug');
 //const res = require('express/lib/response');
 
 // express()
