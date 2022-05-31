@@ -68,7 +68,7 @@ app.post('/login', (req, res) => {
     }
 })
 
-app.post('/voorkeur', (req, res) => {
+app.get('/voorkeur', (req, res) => {
     res.render('voorkeur')
 })
 
