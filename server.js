@@ -69,15 +69,6 @@ app.post('/login', (req, res) => {
 })
 
 app.post('/voorkeur', (req, res) => {
-    const { name, password } = req.body;
-
-    if (name = '' && password  '') {
-        res.render('success', {
-            username: name,
-        })
-    } else {
-        res.render('failure')
-    }
 })
 
 //error handling
