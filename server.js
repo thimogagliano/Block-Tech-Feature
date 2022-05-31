@@ -69,6 +69,7 @@ app.post('/login', (req, res) => {
 })
 
 app.post('/voorkeur', (req, res) => {
+    res.render('voorkeur')
 })
 
 //error handling
