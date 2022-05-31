@@ -3,9 +3,9 @@ const app = express()
 const ejs = require('ejs')
 const bodyParser = require('body-parser')
 const path = require('path')
-const { method, url } = request;
-const { headers } = request;
-const userAgent = headers['user-agent']
+//const { method, url } = request;
+//const { headers } = request;
+//const userAgent = headers['user-agent']
 
 
 app.use(bodyParser.urlencoded({ extended: false }))
