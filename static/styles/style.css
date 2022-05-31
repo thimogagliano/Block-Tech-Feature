@@ -32,6 +32,20 @@ header {
   font-size: 2.2rem;
 }
 
+.voorkeur-form {
+  width: 60%;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 60vh;
+  font-size: 2.2rem;
+}
+
+.voorkeur-form form {
+  width: 40%;
+}
+
 .login-form form {
   width: 40%;
 }
