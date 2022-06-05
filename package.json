@@ -19,6 +19,8 @@
   },
   "homepage": "https://github.com/thimogagliano/Block-Tech-Feature#readme",
   "dependencies": {
+    "arraify": "^1.2.1",
+    "arrayify": "^1.0.0",
     "body-parser": "^1.20.0",
     "camelcase": "^6.3.0",
     "ejs": "^3.1.8",
@@ -26,6 +28,7 @@
     "lodash": "^4.17.21",
     "multer": "^1.4.4",
     "pug": "^3.0.2",
+    "slug": "^5.3.0",
     "squirrelly": "^8.0.8"
   },
   "devDependencies": {
