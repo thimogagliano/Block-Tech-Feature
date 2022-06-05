@@ -3,7 +3,7 @@ const express = require('express');
 //slug package aanroepen
 const slug = require('slug');
 //arrayify package aanroepen
-//const arrayify = require('array-back');
+const arrayify = require('arrayify');
 
 const app = express();
 //ejs package aanroepen
