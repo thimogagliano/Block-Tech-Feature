@@ -151,11 +151,11 @@ app.get('/evenementen/:evenementId/:slug', (req, res) => {
     res.render('evenmentdetails', {title: `Evenementdetails for ${evenementen.name}`, evenement});
 });
 
-app.get('/evenementen/zoek', (req,res) => {
+app.get('/evenementen/zoeken', (req,res) => {
     res.render('zoekevenement', {title: 'Zoek een evenement', genres});
 });
 
-app.post('/evenementen/zoek', (req,res) => {
+app.post('/evenementen/zoeken', (req,res) => {
     let evenement = {
         slug: slug(req.body.name),
         name: req.body.name,
