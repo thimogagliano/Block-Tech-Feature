@@ -148,7 +148,7 @@ app.get('/evenementen/:evenementId/:slug', (req, res) => {
     const evenement = evenementen.find( element => element.id == id);
     console.log(evenementen);
 
-    res.render('evenmentdetails', {title: `Evenementdetails for ${evenementen.name}`, evenement});
+    res.render('evenementdetails', {title: `Evenementdetails for ${evenementen.name}`, evenement});
 });
 
 app.get('/evenementen/zoeken', (req,res) => {
