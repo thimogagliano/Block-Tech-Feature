@@ -1,18 +1,28 @@
+//express package aanroepen
 const express = require('express');
+//slug package aanroepen
 const slug = require('slug');
+//arrayify package aanroepen
 const arrayify = require('array-back');
+
 const app = express();
+//ejs package aanroepen
 const ejs = require('ejs');
+//body-parser package aanroepen
 const bodyParser = require('body-parser');
+
 const path = require('path');
 //const { method, url } = request;
 //const { headers } = request;
 //const userAgent = headers['user-agent']
 
+//de waarde van de poort op 3000 zetten voor gebruik van een lokale server
 const port = 3000;
 
+//een array met genres voor de verschillende evemementen
 const genres = ['Techno', 'House', 'R&B', 'Hip-hop', 'Hardcore', 'Hardstyle', 'Pop', 'Tech-house', 'EDM', 'Electro', 'Urban'];
 
+//een array met evenementen opslaan in de server
 const evenementen = [
     {
         "id": 1,
@@ -117,14 +127,17 @@ const evenementen = [
 
 app.use(bodyParser.urlencoded({ extended: false }));
 
+
+//middleware
 app.use('/static', express.static('static'));
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 
+//aangeven welke engine moet worden gebruikt voor het renderen van de templates van pagina's
 app.set('view engine', 'ejs');
 
 
-
+//route naar de homepage
 app.get('/', (req, res) => {
     const title = (evenementen.name)
     res.render('evenementenlijst', {title, evenementen});
