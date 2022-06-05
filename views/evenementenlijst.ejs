@@ -13,17 +13,17 @@
         <main>
             <h1><%= title %></h1>
 
-            <% movies.forEach(function(movie){ %>
+            <% evenementen.forEach(function(evenement){ %>
             <section>
-                <h2><%= movie.name %></h2>
-                <h3><%= movie.year %></h3>
-                <h3>Categories: </h3>
+                <h2><%= evenement.name %></h2>
+                <h3><%= evenement.datum %></h3>
+                <h3>Genres: </h3>
                 <ul>
-                    <% movie.categories.forEach(function(category){ %>
-                    <li><%= category %></li>
+                    <% evenement.genres.forEach(function(genre){ %>
+                    <li><%= genre %></li>
                     <% }) %>
                 </ul>
-                <p><a href="/movies/<%= movie.id %>/<%= movie.slug %>">More info</a></p>
+                <p><a href="/evenementen/<%= evenementen.id %>/<%= evenement.slug %>">More info</a></p>
             </section>
             <% }) %>
 

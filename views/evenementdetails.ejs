@@ -13,16 +13,16 @@
 
         <h1><%= title %></h1>
 
-        <h2><%= movie.year %></h2>
+        <h2><%= evenementen.datum %></h2>
 
-        <h2>Categories:</h2>
+        <h2>Genres:</h2>
         <ul>
-            <% movie.categories.forEach(function(category){ %>
-            <li><%= category %></li>
+            <% Evenementen.genres.forEach(function(genre){ %>
+            <li><%= genre %></li>
             <% }) %>
         </ul>
 
-        <p><%= movie.storyline %></p>
+        <p><%= evenementen.locatie %></p>
 
     </div>
 
