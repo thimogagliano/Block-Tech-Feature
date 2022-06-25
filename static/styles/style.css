@@ -9,17 +9,18 @@ html {
 }
 
 body {
-  font-family: "Lato", "Helvetica", Helvetica, sans-serif;
-  background: #aa9a96;
-  color: #f7df1e;
+  font-family: "Outfit", "Helvetica", Helvetica, sans-serif;
+  background: #dfe2f2;
+  color: #000000;
   font-size: 1.8rem;
   padding: 1.2rem;
   letter-spacing: 1px;
 }
 
 header {
-  background-color: black;
+  background-color: #6e6ad9;
   margin: 0;
+  width: 100%;
 }
 
 .inner {

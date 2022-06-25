@@ -140,7 +140,7 @@ app.set('view engine', 'ejs');
 //route naar de homepage
 app.get('/', (req, res) => {
     const title = (evenementen.name)
-    res.render('evenementenlijst', {title, evenementen});
+    res.render('home', {title, evenementen});
 })
 
 app.get('/evenementen/:evenementId/:slug', (req, res) => {
@@ -168,7 +168,7 @@ console.log('Evenement zoeken', evenement);
 evenementen.push(evenement);
 //pagina renderen
 const title = "Resultaten voor evenementen zijn geladen";
-res.render('evenementenlijst', {title, evenementen})
+res.render('resultaten', {title, evenementen})
 });
 
 app.post('/login', (req, res) => {
@@ -183,8 +183,8 @@ app.post('/login', (req, res) => {
     }
 })
 
-app.get('/voorkeur', (req, res) => {
-    res.render('voorkeur')
+app.get('/voorkeuren', (req, res) => {
+    res.render('voorkeuren')
 })
 
 //error handling
