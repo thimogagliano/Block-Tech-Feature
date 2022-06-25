@@ -1,6 +1,11 @@
 <%- include('./partials/head.ejs') %>
 <body>
-    <a href="/" class="link">Go Back</a>
-    <p>Welcome <%=username%>, You are logged in.</p>
+    <%- include('./partials/header.ejs') %>
+    <main>
+        <a href="/" class="link">Go Back</a>
+        <p>Welcome <%=username%>, You are logged in.</p>
+    </main>
+    <%- include('./partials/footer.ejs') %>
+
+    <script src="../static/scripts/script.js"></script> 
 </body>
-<%- include('./partials/footer.ejs') %>

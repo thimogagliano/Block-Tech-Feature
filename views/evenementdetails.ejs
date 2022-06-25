@@ -1,31 +1,29 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <%- include('partials/head.ejs') -%>
-</head>
-
+<%- include('partials/head.ejs') -%>
 <body>
-
     <%- include('partials/header.ejs') -%>
+    <main>
+        <section>
+            <h2>
+                Evenement details
+            </h2>
+            <p></p>
+        </section>
+        
+        <section>
+            <h1><%= title %></h1>
 
-    <div class="inner">
+            <h2><%= evenement.datum %></h2>
 
-        <h1><%= title %></h1>
+            <h2>Genres:</h2>
+            <ul>
+                <% evenement.genres.forEach(function(genre){ %>
+                <li><%= genre %></li>
+                <% }) %>
+            </ul>
 
-        <h2><%= evenement.datum %></h2>
-
-        <h2>Genres:</h2>
-        <ul>
-            <% evenement.genres.forEach(function(genre){ %>
-            <li><%= genre %></li>
-            <% }) %>
-        </ul>
-
-        <p><%= evenement.locatie %></p>
-
-    </div>
-
+            <p><%= evenement.locatie %></p>
+        </section>
+    </main>
     <%- include('partials/footer.ejs') -%>
     <script src="../static/scripts/script.js"></script>
 </body>

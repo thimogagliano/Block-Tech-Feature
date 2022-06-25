@@ -1,6 +1,28 @@
 <%- include('./partials/head.ejs') %>
-<%- include('./partials/header.ejs') %>
 <body>
+    <%- include('./partials/header.ejs') %>
+    <main>
+        <section>
+            <h2>
+                Voorkeuren
+            </h2>
+            <p>Vul hier je voorkeuren in met betrekking tot festivals & evenementen. Klik vervolgens op 'zoeken' en laat je overspoelen door feesten!</p>
+        </section>
+
+        <section>
+            <form>
+                <label for="muziekgenre">Muziekgenres</label>
+                <input type="text" id="voorkeurgenre" name="muziekgenre" placeholder="">
+
+                <label for="datum">Datum</label>
+                <input type="text" id="voorkeurdatum" name="datum" placeholder=""> 
+
+                <label for="locatie">Locatie</label>
+                <input type="text" id="voorkeurlocatie" name="locatie" placeholder="">
+            </form>
+        </section>
+    </main>
+    <%- include('./partials/footer.ejs') %>
+
     <script src="../static/scripts/script.js"></script>
 </body>
-<%- include('./partials/footer.ejs') %>

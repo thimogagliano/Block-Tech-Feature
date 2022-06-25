@@ -1,35 +1,24 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <%- include('partials/head'); -%>
-</head>
-
+<%- include('partials/head'); -%>
 <body>
     <%- include('partials/header'); -%>
+    <main>
+        <h1><%= title %></h1>
 
-    <div class="inner">
+        <% evenementen.forEach(function(evenement){ %>
+        <section>
+            <h2><%= evenement.name %></h2>
+            <h3><%= evenement.datum %></h3>
+            <h3>Genres: </h3>
+            <ul>
+                <% evenement.genres.forEach(function(genre){ %>
+                <li><%= genre %></li>
+                <% }) %>
+            </ul>
+            <p><a href="/evenementen/<%= evenement.id %>/<%= evenement.slug %>">More info</a></p>
+        </section>
+        <% }) %>
+    </main>
 
-        <main>
-            <h1><%= title %></h1>
-
-            <% evenementen.forEach(function(evenement){ %>
-            <section>
-                <h2><%= evenement.name %></h2>
-                <h3><%= evenement.datum %></h3>
-                <h3>Genres: </h3>
-                <ul>
-                    <% evenement.genres.forEach(function(genre){ %>
-                    <li><%= genre %></li>
-                    <% }) %>
-                </ul>
-                <p><a href="/evenementen/<%= evenement.id %>/<%= evenement.slug %>">More info</a></p>
-            </section>
-            <% }) %>
-
-        </main>
-
-    </div>
     <%- include('partials/footer'); -%>
     <script src="../static/scripts/script.js"></script>
 </body>

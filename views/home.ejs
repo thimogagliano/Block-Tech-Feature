@@ -1,7 +1,26 @@
 <%- include('./partials/head.ejs') %>
-<%- include('./partials/header.ejs') %>
 <body>
+    <%- include('./partials/header.ejs') %>
+    <main>
+        <section>
+            <h2>
+                Welkom op Festifinder!
+            </h2>
+            <p>Festifinder is <em>dé</em> ultieme website voor iedereen die van een leuk feest houd. Ervaren evenementen bezoeker of helemaal? Geen probleem! Festifinder is er om je op weg te helpen naar het feest van je dromen!</p>
+        </section>
 
+        <section class="navhome">
+            <nav>
+                <ul>
+                    <li>
+                        <a href="./voorkeuren">Begin met zoeken!</a>
+                        <a href="#">Mijn lijst</a>
+                    </li>
+                </ul>
+            </nav>
+        </section>
+    </main>
+
+    <%- include('./partials/footer.ejs') %>
     <script src="../static/scripts/script.js"></script>
 </body>
-<%- include('./partials/footer.ejs') %>
