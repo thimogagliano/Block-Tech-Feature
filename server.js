@@ -1,17 +1,20 @@
-//express package aanroepen
+//require 
 const express = require('express');
-//slug package aanroepen
 const slug = require('slug');
-//arrayify package aanroepen
 const arrayify = require('arrayify');
+const ejs = require('ejs');
+const bodyParser = require('body-parser');
+const path = require('path');
+
+// const multer = require('multer')
+
+// const upload = multer({ dest: 'uploads/'})
 
 const app = express();
-//ejs package aanroepen
-const ejs = require('ejs');
-//body-parser package aanroepen
-const bodyParser = require('body-parser');
 
-const path = require('path');
+
+
+
 //const { method, url } = request;
 //const { headers } = request;
 //const userAgent = headers['user-agent']
@@ -122,9 +125,6 @@ const evenementen = [
     },
 ];
 
-
-
-
 app.use(bodyParser.urlencoded({ extended: false }));
 
 
@@ -171,6 +171,14 @@ const title = "Resultaten voor evenementen zijn geladen";
 res.render('resultaten', {title, evenementen})
 });
 
+app.get('/voorkeuren', (req, res) => {
+    res.render('voorkeuren')
+})
+
+app.post('/voorkeuren', (req, res) => {
+
+})
+
 app.post('/login', (req, res) => {
     const { name, password } = req.body;
 
@@ -183,9 +191,6 @@ app.post('/login', (req, res) => {
     }
 })
 
-app.get('/voorkeuren', (req, res) => {
-    res.render('voorkeuren')
-})
 
 //error handling
 app.use((req, res, next) => {
