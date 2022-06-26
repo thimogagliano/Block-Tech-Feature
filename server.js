@@ -119,6 +119,9 @@ const evenementen = [
     },
 ];
 
+const userVoorkeur = [
+];
+
 app.use(bodyParser.urlencoded({ extended: true }));
 
 
@@ -146,9 +149,19 @@ app.get('/resultaten', (req, res) => {
 
 
 
-app.post('/resultaten-voorkeuren', (req, res) => {
-    res.send( req.body)
+app.post('/resultaten', (req, res) => {
+    let voorkeuren = {
+        genre: req.body.muziekgenre,
+        datum: req.body.datum,
+        locatie: req.body.locatie,
+    };
+
+    userVoorkeur.push(voorkeuren);
+    
+    res.render('resultaten', {zoekopdracht: userVoorkeur})
 })
+
+
 
 
 
