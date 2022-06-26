@@ -1,0 +1,15 @@
+$font-stack: 'Outfit', 'Helvetica', Helvetica, 'sans-serif';
+$body-backg-color: #dfe2f2;
+$header-backg-color: #6e6ad9;
+$prim-text-color: #000000;
+$sec-text-color: #ffffff;
+
+body {
+    font: 100% $font-stack;
+    color: $prim-text-color;
+    background-color: $body-backg-color;
+}
+
+header {
+    background-color: $header-backg-color;
+}
