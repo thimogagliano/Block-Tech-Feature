@@ -10,15 +10,17 @@
         </section>
 
         <section>
-            <form>
+            <form action="/resultaten" method="post">
                 <label for="muziekgenre">Muziekgenres</label>
-                <input type="text" id="voorkeurgenre" name="muziekgenre" placeholder="">
+                <input type="text" id="voorkeurgenre" name="muziekgenre" placeholder="Genre">
 
                 <label for="datum">Datum</label>
-                <input type="text" id="voorkeurdatum" name="datum" placeholder=""> 
+                <input type="date" id="voorkeurdatum" name="datum" placeholder="Datum"> 
 
                 <label for="locatie">Locatie</label>
-                <input type="text" id="voorkeurlocatie" name="locatie" placeholder="">
+                <input type="text" id="voorkeurlocatie" name="locatie" placeholder="Locatie">
+
+                <button>Zoeken</button>
             </form>
         </section>
     </main>

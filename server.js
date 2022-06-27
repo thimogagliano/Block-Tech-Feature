@@ -1,20 +1,17 @@
-//express package aanroepen
+//require 
 const express = require('express');
-//slug package aanroepen
 const slug = require('slug');
-//arrayify package aanroepen
 const arrayify = require('arrayify');
+const ejs = require('ejs');
+const bodyParser = require('body-parser');
+const path = require('path');
+
+// const multer = require('multer')
+
+// const upload = multer({ dest: 'uploads/'})
 
 const app = express();
-//ejs package aanroepen
-const ejs = require('ejs');
-//body-parser package aanroepen
-const bodyParser = require('body-parser');
 
-const path = require('path');
-//const { method, url } = request;
-//const { headers } = request;
-//const userAgent = headers['user-agent']
 
 //de waarde van de poort op 3000 zetten voor gebruik van een lokale server
 const port = 3000;
@@ -122,70 +119,53 @@ const evenementen = [
     },
 ];
 
+const userVoorkeur = [
+];
 
-
-
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({ extended: true }));
 
 
 //middleware
 app.use('/static', express.static('static'));
 app.use(express.json());
-app.use(express.urlencoded({extended: true}));
+app.use(express.urlencoded({ extended: true }));
 
 //aangeven welke engine moet worden gebruikt voor het renderen van de templates van pagina's
 app.set('view engine', 'ejs');
 
 
-//route naar de homepage
+// routes
 app.get('/', (req, res) => {
-    const title = (evenementen.name)
-    res.render('home', {title, evenementen});
-})
-
-app.get('/evenementen/:evenementId/:slug', (req, res) => {
-    const id = req.params.evenementId;
-    const evenement = evenementen.find( element => element.id == id);
-    console.log(evenementen);
-
-    res.render('evenementdetails', {title: `Evenementdetails for ${evenement.name}`, evenement});
-});
-
-app.get('/evenementen/zoeken', (req,res) => {
-    res.render('zoekevenement', {title: 'Zoek een evenement', genres});
-});
-
-app.post('/evenementen/zoeken', (req,res) => {
-    let evenement = {
-        slug: slug(req.body.name),
-        name: req.body.name,
-        datum: req.body.datum,
-        genres: arrayify(req.body.genres),
-        locatie: req.body.locatie
-    };
-console.log('Evenement zoeken', evenement);
-//zoeken naar evenement
-evenementen.push(evenement);
-//pagina renderen
-const title = "Resultaten voor evenementen zijn geladen";
-res.render('resultaten', {title, evenementen})
-});
-
-app.post('/login', (req, res) => {
-    const { name, password } = req.body;
-
-    if (name === 'admin' && password === 'admin') {
-        res.render('success', {
-            username: name,
-        })
-    } else {
-        res.render('failure')
-    }
+    res.render('home')
 })
 
 app.get('/voorkeuren', (req, res) => {
     res.render('voorkeuren')
 })
+
+app.get('/resultaten', (req, res) => {
+    res.render('resultaten')
+})
+
+
+
+app.post('/resultaten', (req, res) => {
+    console.log(req.body);
+    let voorkeuren = {
+        genre: req.body.muziekgenre,
+        datum: req.body.datum,
+        locatie: req.body.locatie,
+    };
+
+    console.log(voorkeuren)
+    
+    res.render('resultaten', {zoekopdracht: voorkeuren})
+})
+
+
+
+
+
 
 //error handling
 app.use((req, res, next) => {
@@ -197,39 +177,3 @@ app.use((req, res, next) => {
 app.listen(port, () => {
     console.log('Server started on port 3000')
 });
-
-
-
-
-//const http = require('http');
-
-//http.createServer((request, response) => {
-//  const { headers, method, url } = request;
-//  let body = [];
-//  request.on('error', (err) => {
- //   console.error(err);
- // }).on('data', (chunk) => {
- //   body.push(chunk);
- // }).on('end', () => {
-   // body = Buffer.concat(body).toString();
-    // BEGINNING OF NEW STUFF
-
-   // response.on('error', (err) => {
-     // console.error(err);
-    //});
-
-    //response.statusCode = 200;
-    //response.setHeader('Content-Type', 'application/json');
-    // Note: the 2 lines above could be replaced with this next one:
-    // response.writeHead(200, {'Content-Type': 'application/json'})
-
-    //const responseBody = { headers, method, url, body };
-
-    //response.write(JSON.stringify(responseBody));
-    //response.end();
-    // Note: the 2 lines above could be replaced with this next one:
-    // response.end(JSON.stringify(responseBody))
-
-    // END OF NEW STUFF
-  //});
-//}).listen(3000);
