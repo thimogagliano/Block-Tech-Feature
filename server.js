@@ -150,13 +150,12 @@ app.get('/resultaten', (req, res) => {
 
 
 app.post('/resultaten', (req, res) => {
+    console.log(req.body);
     let voorkeuren = {
         genre: req.body.muziekgenre,
         datum: req.body.datum,
         locatie: req.body.locatie,
     };
-
-    userVoorkeur.push(voorkeuren);
     
     res.render('resultaten', {zoekopdracht: userVoorkeur})
 })
