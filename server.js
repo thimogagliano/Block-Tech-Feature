@@ -156,8 +156,10 @@ app.post('/resultaten', (req, res) => {
         datum: req.body.datum,
         locatie: req.body.locatie,
     };
+
+    console.log(voorkeuren)
     
-    res.render('resultaten', {zoekopdracht: userVoorkeur})
+    res.render('resultaten', {zoekopdracht: voorkeuren})
 })
 
 
