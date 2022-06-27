@@ -1,3 +1,5 @@
+const dotenv = require('dotenv').config()
+
 //express package aanroepen
 const express = require('express');
 //slug package aanroepen

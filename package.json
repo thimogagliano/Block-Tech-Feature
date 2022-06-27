@@ -23,6 +23,7 @@
     "arrayify": "^1.0.0",
     "body-parser": "^1.20.0",
     "camelcase": "^6.3.0",
+    "dotenv": "^16.0.1",
     "ejs": "^3.1.8",
     "express": "^4.18.1",
     "lodash": "^4.17.21",
