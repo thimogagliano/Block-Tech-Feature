@@ -2,21 +2,16 @@
 <body>
     <%- include('partials/header'); -%>
     <main>
-        <h1><%= title %></h1>
-
-        <% evenementen.forEach(function(evenement){ %>
         <section>
-            <h2><%= evenement.name %></h2>
-            <h3><%= evenement.datum %></h3>
-            <h3>Genres: </h3>
-            <ul>
-                <% evenement.genres.forEach(function(genre){ %>
-                <li><%= genre %></li>
-                <% }) %>
-            </ul>
-            <p><a href="/evenementen/<%= evenement.id %>/<%= evenement.slug %>">More info</a></p>
+            <h2>
+                Resultaten
+            </h2>
+            <p>Resultaten voor: 
+                <%= zoekopdracht.genre %>
+                <%= zoekopdracht.datum %>
+                <%= zoekopdracht.locatie %>
+            </p>
         </section>
-        <% }) %>
     </main>
 
     <%- include('partials/footer'); -%>

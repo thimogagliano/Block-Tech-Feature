@@ -10,15 +10,30 @@
         </section>
 
         <section>
-            <form>
+            <form action="/resultaten" method="post">
                 <label for="muziekgenre">Muziekgenres</label>
-                <input type="text" id="voorkeurgenre" name="muziekgenre" placeholder="">
+                <select id="voorkeurgenre" name="muziekgenre" placeholder="genre">
+                    <option value="geengenre" selected></option>
+                    <option value="Techno">Techno</option>
+                    <option value="House">House</option>
+                    <option value="R&B">R&B</option>
+                    <option value="Hip-hop">Hip-hop</option>
+                    <option value="Hardcore">Hardcore</option>
+                    <option value="Hardstyle">Hardstyle</option>
+                    <option value="Pop">Pop</option>
+                    <option value="Tech-house">Tech-house</option>
+                    <option value="EDM">EDM</option>
+                    <option value="Electro">Electro</option>
+                    <option value="Urban">Urban</option>
+                </select>
 
                 <label for="datum">Datum</label>
-                <input type="text" id="voorkeurdatum" name="datum" placeholder=""> 
+                <input type="date" id="voorkeurdatum" name="datum" placeholder="Datum"> 
 
                 <label for="locatie">Locatie</label>
-                <input type="text" id="voorkeurlocatie" name="locatie" placeholder="">
+                <input type="text" id="voorkeurlocatie" name="locatie" placeholder="Locatie">
+
+                <button>Zoeken</button>
             </form>
         </section>
     </main>
