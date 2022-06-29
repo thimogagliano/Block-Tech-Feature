@@ -1,3 +1,12 @@
+// database
+// const { dbConnect, dbGet } = require('./connection')
+
+const { MongoClient } = require('mongodb');
+
+let uri = 'mongodb+srv://adminFestifinder:admin1234@projectcluster.bqqur.mongodb.net/?retryWrites=true&w=majority';
+ 
+const client = new MongoClient(uri);
+
 //require 
 const express = require('express');
 const slug = require('slug');
@@ -5,6 +14,7 @@ const arrayify = require('arrayify');
 const ejs = require('ejs');
 const bodyParser = require('body-parser');
 const path = require('path');
+const { ALL } = require('dns');
 
 // const multer = require('multer')
 
@@ -22,96 +32,72 @@ const genres = ['Techno', 'House', 'R&B', 'Hip-hop', 'Hardcore', 'Hardstyle', 'P
 //een array met evenementen opslaan in de server
 const evenementen = [
     {
-        "id": 1,
-        "slug": 'awakenings',
-        "name": 'Awakenings',
+        "event": 'Awakenings',
         "datum": '29-31/07/2022',
         "genres": ['Techno', 'Tech-house'],
         "locatie": 'Hilvarenbeek, Noord-Brabant'
     },
     {
-        "id": 2,
-        "slug": 'soenda',
         "name": 'Soenda',
         "datum": '21/05/2022',
         "genres": ['Techno', 'House', 'Tech-house'],
         "locatie": 'Ruigenhoekse polder, Utrecht'
     },
     {
-        "id": 3,
-        "slug": 'verknipt',
         "name": 'Verknipt',
         "datum": '11-12/06/2022',
         "genres": ['Techno', 'Tech-house'],
         "locatie": 'Strijkviertelplas, Utrecht,'
     },
     {
-        "id": 4,
-        "slug": 'woohah',
         "name": 'Woohah',
         "datum": '1-3/07/2022',
         "genres": ['R&B', 'Hip-hop', 'Urban'],
         "locatie": 'Beeksebergen, Noord-Brabant'
     },
     {
-        "id": 5,
-        "slug": 'strafwerk',
         "name": 'Strafwerk',
         "datum": '20/08/2022',
         "genres": ['House', 'Tech-house', 'Techno'],
         "locatie": 'Havenpark, Amsterdam, Noord-Holland'
     },
     {
-        "id": 6,
-        "slug": 'pinkpop',
         "name": 'Pinkpop',
         "datum": '17-19/06/2022',
         "genres": ['Pop'],
         "locatie": 'Megaland, Landgraaf, Limburg'
     },
     {
-        "id": 7,
-        "slug": 'reaktor',
         "name": 'Reaktor',
         "datum": '02/04/2022',
         "genres": ['Techno'],
         "locatie": 'Elementstraat 25, Amsterdam, Noord-Holland'
     },
     {
-        "id": 8,
-        "slug": 'rotterdamrave',
         "name": 'Rotterdamrave',
         "datum": '13/08/2022',
         "genres": ['Techno'],
         "locatie": 'RDM-Grounds, Rotterdam, Zuid-Holland'
     },
     {
-        "id": 9,
-        "slug": 'thuishaven',
         "name": 'Thuishaven',
         "datum": '4-5/06/2022',
         "genres": ['Tech-house', 'House', 'Techno'],
         "locatie": 'Thuishaven Festivalterrein, Amsterdam, Noord-Holland'
     },
     {
-        "id": 10,
-        "slug": 'tomorrowland',
         "name": 'Tomorrowland',
         "datum": '15-31/07/2022',
         "genres": ['EDM', 'Electro', 'House', 'Tech-house', 'Techno'],
         "locatie": 'Provinciaal Recreatiedomein De Schorre, Boom, België'
     },
     {
-        "id": 11,
-        "slug": 'intents',
         "name": 'Intents',
         "datum": '27-29/05/2022',
         "genres": ['Hardcore', 'Hardstyle'],
         "locatie": 'Oisterwijk, Noord-Brabant'
     },
     {
-        "id": 12,
-        "slug": 'supremacy',
         "name": 'Supremacy',
         "datum": '20/09/2022',
         "genres": ['Hardcore', 'Hardstyle'],
@@ -122,6 +108,71 @@ const evenementen = [
 const userVoorkeur = [
 ];
 
+
+// Database connections
+// let db
+
+
+// dbConnect((err) => {
+//     if (!err) {
+//         //luisteren naar een port
+//         app.listen(port, () => {
+//         console.log('Server started on port 3000')
+//         })
+//         db = dbGet()
+//     }
+// })
+
+// function dbConnect(cb) {
+//     MongoClient.connect(uri)
+//         .then((client) => {
+//             dbConnection = client.db()
+//             return cb()
+//         })
+//         .catch(err => {
+//             console.error("Error 404: page not found");
+//             res.status(404).render('404', 'Error 404: Sorry!, Page Not Found!')
+//             return cb(err)
+//         })
+// };
+
+// function dbGet() {
+//     dbConnection
+// };
+
+
+// database mongodb connection
+async function main() {
+    try {
+        await client.connect();
+
+        await listDatabases(client);
+    } catch (e) {
+        console.error(e);
+    } finally {
+        await client.close()
+        console.log('succes');
+    }
+}
+
+main().catch(console.error);
+
+async function listDatabases(client){
+    app.listen(port, () => {
+    console.log('Server started on port 3000')
+    })
+
+    databasesList = await client
+        .db()
+        .admin()
+        .listDatabases();
+ 
+    console.log("Databases:");
+    databasesList.databases
+        .forEach(db => console.log(` - ${db.name}`));
+};
+
+//bodyparser
 app.use(bodyParser.urlencoded({ extended: true }));
 
 
@@ -144,23 +195,50 @@ app.get('/voorkeuren', (req, res) => {
 })
 
 app.get('/resultaten', (req, res) => {
+    db.collection('evenementen')
+        .find()
+
     res.render('resultaten')
 })
 
-
-
-app.post('/resultaten', (req, res) => {
-    console.log(req.body);
-    let voorkeuren = {
-        genre: req.body.muziekgenre,
-        datum: req.body.datum,
-        locatie: req.body.locatie,
-    };
-
-    console.log(voorkeuren)
+app.get('/test', (req, res) => {
+    let events = []
     
-    res.render('resultaten', {zoekopdracht: voorkeuren})
-})
+    db.collection('evenementen')
+        .find()
+        .forEach(event => events.push(event))
+        .then(() => {
+            res.status(200).json(events)
+        })
+        .catch(() => {
+            res.status(500).json({error: "kon de documenten niet laden"})
+        })
+});
+
+// app.post('/resultaten', (req, res) => {
+//     client.db("DatabaseFestiFinder").collection("voorkeuren").insertOne({"genres": req.body.muziekgenre, "date": req.body.datum, "locatie": req.body.locatie});
+
+//     console.log(req.body);
+//     let voorkeuren = {
+//         genre: req.body.muziekgenre,
+//         datum: req.body.datum,
+//         locatie: req.body.locatie,
+//     };
+
+//     console.log(voorkeuren)
+    
+//     res.render('resultaten', {zoekopdracht: voorkeuren})
+// })
+
+// async function findEvents() {
+//     const result = await client.db("DatabaseFestiFinder").collection("evenementen").find({genres: voorkeuren.genre});
+
+//     if (result) {
+//         console.log(`resultaten gevonden voor '&{voorkeuren.genre}':`);
+//     } else {
+//         console.log("geen resultaten");
+//     }
+// }
 
 
 
@@ -168,12 +246,8 @@ app.post('/resultaten', (req, res) => {
 
 
 //error handling
-app.use((req, res, next) => {
-    console.error("Error 404: page not found");
-    res.status(404).render('404', 'Error 404: Sorry!, Page Not Found!')
-});
+// app.use((req, res, next) => {
+//     console.error("Error 404: page not found");
+//     res.status(404).render('404', 'Error 404: Sorry!, Page Not Found!')
+// });
 
-//luisteren naar een port
-app.listen(port, () => {
-    console.log('Server started on port 3000')
-});
