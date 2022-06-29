@@ -1,8 +1,6 @@
-<<<<<<< HEAD
 const dotenv = require('dotenv').config()
 
 //express package aanroepen
-=======
 // database
 // const { dbConnect, dbGet } = require('./connection')
 
@@ -12,8 +10,15 @@ let uri = 'mongodb+srv://adminFestifinder:admin1234@projectcluster.bqqur.mongodb
  
 const client = new MongoClient(uri);
 
+// const apiUrl = "https://api.open-meteo.com/v1/forecast?latitude=52.3738&longitude=4.8910&hourly=temperature_2m";
+
+// const getData = fetch(apiUrl)
+//     .then(response => response.json)
+//     .then(jsonObject => console.log(jsonObject))
+
+// getData();
+
 //require 
->>>>>>> b10311ce5e00e621054d020526daacb69fef3ea4
 const express = require('express');
 const slug = require('slug');
 const arrayify = require('arrayify');
@@ -31,88 +36,6 @@ const app = express();
 
 //de waarde van de poort op 3000 zetten voor gebruik van een lokale server
 const port = 3000;
-
-//een array met genres voor de verschillende evemementen
-const genres = ['Techno', 'House', 'R&B', 'Hip-hop', 'Hardcore', 'Hardstyle', 'Pop', 'Tech-house', 'EDM', 'Electro', 'Urban'];
-
-//een array met evenementen opslaan in de server
-const evenementen = [
-    {
-        "event": 'Awakenings',
-        "datum": '29-31/07/2022',
-        "genres": ['Techno', 'Tech-house'],
-        "locatie": 'Hilvarenbeek, Noord-Brabant'
-    },
-    {
-        "name": 'Soenda',
-        "datum": '21/05/2022',
-        "genres": ['Techno', 'House', 'Tech-house'],
-        "locatie": 'Ruigenhoekse polder, Utrecht'
-    },
-    {
-        "name": 'Verknipt',
-        "datum": '11-12/06/2022',
-        "genres": ['Techno', 'Tech-house'],
-        "locatie": 'Strijkviertelplas, Utrecht,'
-    },
-    {
-        "name": 'Woohah',
-        "datum": '1-3/07/2022',
-        "genres": ['R&B', 'Hip-hop', 'Urban'],
-        "locatie": 'Beeksebergen, Noord-Brabant'
-    },
-    {
-        "name": 'Strafwerk',
-        "datum": '20/08/2022',
-        "genres": ['House', 'Tech-house', 'Techno'],
-        "locatie": 'Havenpark, Amsterdam, Noord-Holland'
-    },
-    {
-        "name": 'Pinkpop',
-        "datum": '17-19/06/2022',
-        "genres": ['Pop'],
-        "locatie": 'Megaland, Landgraaf, Limburg'
-    },
-    {
-        "name": 'Reaktor',
-        "datum": '02/04/2022',
-        "genres": ['Techno'],
-        "locatie": 'Elementstraat 25, Amsterdam, Noord-Holland'
-    },
-    {
-        "name": 'Rotterdamrave',
-        "datum": '13/08/2022',
-        "genres": ['Techno'],
-        "locatie": 'RDM-Grounds, Rotterdam, Zuid-Holland'
-    },
-    {
-        "name": 'Thuishaven',
-        "datum": '4-5/06/2022',
-        "genres": ['Tech-house', 'House', 'Techno'],
-        "locatie": 'Thuishaven Festivalterrein, Amsterdam, Noord-Holland'
-    },
-    {
-        "name": 'Tomorrowland',
-        "datum": '15-31/07/2022',
-        "genres": ['EDM', 'Electro', 'House', 'Tech-house', 'Techno'],
-        "locatie": 'Provinciaal Recreatiedomein De Schorre, Boom, België'
-    },
-    {
-        "name": 'Intents',
-        "datum": '27-29/05/2022',
-        "genres": ['Hardcore', 'Hardstyle'],
-        "locatie": 'Oisterwijk, Noord-Brabant'
-    },
-    {
-        "name": 'Supremacy',
-        "datum": '20/09/2022',
-        "genres": ['Hardcore', 'Hardstyle'],
-        "locatie": 'Brabanthallen, Den Bosch, Noord-Brabant'
-    },
-];
-
-const userVoorkeur = [
-];
 
 
 // Database connections
@@ -209,9 +132,33 @@ app.get('/voorkeuren', (req, res) => {
 //     res.render('resultaten')
 // })
 
+// const resultSchema = {
+//     event: String,
+//     genres: String,
+//     date: String,
+//     location: String
+// };
 
-async function createListing(client, newListing) {
-    const result = await client.db('DatabaseFestiFinder').collection('voorkeuren').insertOne(newListing)
+// const eventResult = mongoose.model('Result', resultSchema)
+
+const zoekResultaten = [
+
+];
+
+
+async function findMatch(client, userVoorkeur) {
+    const cursor = client.db('DatabaseFestiFinder').collection('evenementen').find(userVoorkeur)
+
+    const results = await cursor.toArray();
+    console.log(results);
+
+    zoekResultaten.push(JSON.stringify(results));
+
+    console.log(zoekResultaten)
+}
+
+async function createVoorkeur(client, newVoorkeur) {
+    const result = await client.db('DatabaseFestiFinder').collection('voorkeuren').insertOne(newVoorkeur)
 
     console.log(`Nieuw document met volgend id: ${result.insertedId}`)
 }
@@ -219,7 +166,7 @@ async function createListing(client, newListing) {
 app.post('/resultaten', async (req, res) => {
     await client.connect()
 
-    await createListing(client, {
+    await createVoorkeur(client, {
         genres: req.body.muziekgenre,
         date: req.body.datum,
         location: req.body.locatie
@@ -231,7 +178,11 @@ app.post('/resultaten', async (req, res) => {
         locatie: req.body.locatie
     }
 
-    res.render('resultaten', {zoekopdracht: voorkeuren})
+    await findMatch(client, {
+        genres: voorkeuren.genre,
+    })     
+
+    res.render('resultaten', {zoekopdracht: voorkeuren, resultaten: zoekResultaten})
 })
 
 

@@ -12,6 +12,16 @@
                 <%= zoekopdracht.locatie %>
             </p>
         </section>
+        <section>
+            <h3>Festivals met <%= zoekopdracht.genre %>:</h3>
+            <section>
+                <p>
+                    <% resultaten.forEach(function(zoekResultaten) { %>
+                        <p><%= resultaten %></p>
+                    <% }) %>
+                </p>
+            </section>
+        </section>
     </main>
 
     <%- include('partials/footer'); -%>
