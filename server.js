@@ -1,7 +1,7 @@
 // database
 // const { dbConnect, dbGet } = require('./connection')
 
-const { MongoClient } = require('mongodb');
+const { MongoClient, MongoKerberosError } = require('mongodb');
 
 let uri = 'mongodb+srv://adminFestifinder:admin1234@projectcluster.bqqur.mongodb.net/?retryWrites=true&w=majority';
  
@@ -157,6 +157,8 @@ async function main() {
 
 main().catch(console.error);
 
+
+
 async function listDatabases(client){
     app.listen(port, () => {
     console.log('Server started on port 3000')
@@ -194,36 +196,63 @@ app.get('/voorkeuren', (req, res) => {
     res.render('voorkeuren')
 })
 
-app.get('/resultaten', (req, res) => {
-    db.collection('evenementen')
-        .find()
+// app.get('/resultaten', (req, res) => {
+//     db.collection('evenementen')
+//         .find()
 
-    res.render('resultaten')
+//     res.render('resultaten')
+// })
+
+
+async function createListing(client, newListing) {
+    const result = await client.db('DatabaseFestiFinder').collection('voorkeuren').insertOne(newListing)
+
+    console.log(`Nieuw document met volgend id: ${result.insertedId}`)
+}
+
+app.post('/resultaten', async (req, res) => {
+    await client.connect()
+
+    await createListing(client, {
+        genres: req.body.muziekgenre,
+        date: req.body.datum,
+        location: req.body.locatie
+    })
+
+    let voorkeuren = {
+        genre: req.body.muziekgenre,
+        datum: req.body.datum,
+        locatie: req.body.locatie
+    }
+
+    res.render('resultaten', {zoekopdracht: voorkeuren})
 })
 
-app.get('/test', (req, res) => {
-    let events = []
-    
-    db.collection('evenementen')
-        .find()
-        .forEach(event => events.push(event))
-        .then(() => {
-            res.status(200).json(events)
-        })
-        .catch(() => {
-            res.status(500).json({error: "kon de documenten niet laden"})
-        })
-});
 
-// app.post('/resultaten', (req, res) => {
-//     client.db("DatabaseFestiFinder").collection("voorkeuren").insertOne({"genres": req.body.muziekgenre, "date": req.body.datum, "locatie": req.body.locatie});
+
+// app.get('/test', (req, res) => {
+//     let events = []
+    
+//     client.db.collection('evenementen')
+//         .find()
+//         .forEach(event => events.push(event))
+//         .then(() => {
+//             res.status(200).json(events)
+//         })
+//         .catch(() => {
+//             res.status(500).json({error: "kon de documenten niet laden"})
+//         })
+// });
+
+
+
+//     const result = await client.db("DatabaseFestiFinder").collection("voorkeuren").insertOne(newListing)
 
 //     console.log(req.body);
-//     let voorkeuren = {
-//         genre: req.body.muziekgenre,
-//         datum: req.body.datum,
-//         locatie: req.body.locatie,
-//     };
+
+//     console.log(voorkeuren)
+//     console.log(`Nieuw document met volgend id: ${result.insertedId}`)
+// })
 
 //     console.log(voorkeuren)
     
