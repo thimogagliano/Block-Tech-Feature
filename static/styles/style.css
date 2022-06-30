@@ -22,10 +22,11 @@ body>section {
   padding-right: 1em;
 }
 
-body>section.navhome>nav>ul>li {
+.navhome>nav>ul>li {
   display: flex;
   align-items: center;
   flex-direction: column;
+  list-style: none;
 }
 
 body>section.navhome>nav>ul>li>a {
@@ -47,6 +48,11 @@ body>section.navhome>nav>ul>li>a:nth-of-type(2) {
 
 header {
   background-color: #6e6ad9;
+}
+
+main {
+  margin-left: 5em;
+  margin-right: 5em;
 }
 
 h2 {
@@ -83,6 +89,21 @@ header>section>nav>ul>li>a {
   border: solid 2px #000000;
   border-radius: 5px;
   padding: 0.2em;
+}
+
+.navhome {
+  margin-top: 2em;
+}
+
+.navhome>nav>ul>li>a {
+  text-decoration: none;
+  border: solid 2px #000000;
+  border-radius: 10px;
+  padding: 0.5em;
+  color: #ffffff;
+  background-color: #000000;
+  font-weight: 600;
+  margin-top: 2em;
 }
 
 footer {
