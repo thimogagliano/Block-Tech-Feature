@@ -11,6 +11,7 @@ const path = require('path');
 const { ALL } = require('dns');
 const app = express();
 const port = 3000;
+const api = require('./api.js')
 const zoekResultaten = [
 
 ];
