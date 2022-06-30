@@ -82,3 +82,5 @@ Hieronder zijn de geraadpleegde bronnen te zien bij het maken van de applicatie:
   * https://www.mongodb.com/docs/guides/crud/read_queries/
   * https://www.youtube.com/watch?v=ExcRbA7fy_A&list=PL4cUxeGkcC9h77dJ-QJlwGlZlTd4ecZOA
   * https://www.youtube.com/watch?v=bhiEJW5poHU
+* Heroku
+  * https://devcenter.heroku.com/articles/getting-started-with-nodejs#set-up
