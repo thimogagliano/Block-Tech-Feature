@@ -85,3 +85,7 @@ Hieronder zijn de geraadpleegde bronnen te zien bij het maken van de applicatie:
 * Heroku
   * https://dashboard.heroku.com/apps
   * https://devcenter.heroku.com/articles/getting-started-with-nodejs#set-up
+* Third party API
+  * https://open-meteo.com/en/docs#api_form
+  * https://www.sitepoint.com/understanding-module-exports-exports-node-js/
+  * https://redwoodjs.com/docs/how-to/using-a-third-party-api
