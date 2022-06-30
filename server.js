@@ -4,7 +4,6 @@ const { MongoClient } = require('mongodb');
 let uri = 'mongodb+srv://adminFestifinder:admin1234@projectcluster.bqqur.mongodb.net/?retryWrites=true&w=majority';
 const client = new MongoClient(uri);
 const express = require('express');
-const slug = require('slug');
 const arrayify = require('arrayify');
 const ejs = require('ejs');
 const bodyParser = require('body-parser');
