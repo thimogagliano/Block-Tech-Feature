@@ -61,24 +61,24 @@ This project is [MIT](https://github.com/thimogagliano/Block-Tech-Feature/blob/m
 
 ## Geraadpleegde bronnen
 Hieronder zijn de geraadpleegde bronnen te zien bij het maken van de applicatie:
-Voor het maken van static files
-* https://expressjs.com/en/starter/static-files.html
-Voor het toevoegen van een error handler in de server.js met behulp van express
-* https://expressjs.com/en/guide/error-handling.html
-* https://www.youtube.com/watch?v=jqnYt6jCrOQ
-Express routing
-* https://expressjs.com/en/guide/using-middleware.html
-* http://expressjs.com/en/guide/routing.html
-Voor het gebruiken van de templating engine van pug
-* https://pugjs.org/api/getting-started.html
-Voor het gebruiken van een templating engine met epress.js
-* http://expressjs.com/en/guide/using-template-engines.html
-* https://www.youtube.com/watch?v=DpkbM1PD9Eo
-* https://levelup.gitconnected.com/render-dynamic-content-in-nodejs-using-templates-a58cae681148
-* https://www.digitalocean.com/community/tutorials/how-to-use-ejs-to-template-your-node-application#step-1-configuring-with-server-js
-MongoDB
-* https://www.mongodb.com/docs/
-* https://www.youtube.com/watch?v=fbYExfeFsI0
-* https://www.mongodb.com/docs/guides/crud/read_queries/
-* https://www.youtube.com/watch?v=ExcRbA7fy_A&list=PL4cUxeGkcC9h77dJ-QJlwGlZlTd4ecZOA
-* https://www.youtube.com/watch?v=bhiEJW5poHU
+* Voor het maken van static files
+  * https://expressjs.com/en/starter/static-files.html
+* Voor het toevoegen van een error handler in de server.js met behulp van express
+  * https://expressjs.com/en/guide/error-handling.html
+  * https://www.youtube.com/watch?v=jqnYt6jCrOQ
+* Express routing
+  * https://expressjs.com/en/guide/using-middleware.html
+  * http://expressjs.com/en/guide/routing.html
+* Voor het gebruiken van de templating engine van pug
+  * https://pugjs.org/api/getting-started.html
+* Voor het gebruiken van een templating engine met epress.js
+  * http://expressjs.com/en/guide/using-template-engines.html
+  * https://www.youtube.com/watch?v=DpkbM1PD9Eo
+  * https://levelup.gitconnected.com/render-dynamic-content-in-nodejs-using-templates-a58cae681148
+  * https://www.digitalocean.com/community/tutorials/how-to-use-ejs-to-template-your-node-application#step-1-configuring-with-server-js
+* MongoDB
+  * https://www.mongodb.com/docs/
+  * https://www.youtube.com/watch?v=fbYExfeFsI0
+  * https://www.mongodb.com/docs/guides/crud/read_queries/
+  * https://www.youtube.com/watch?v=ExcRbA7fy_A&list=PL4cUxeGkcC9h77dJ-QJlwGlZlTd4ecZOA
+  * https://www.youtube.com/watch?v=bhiEJW5poHU
