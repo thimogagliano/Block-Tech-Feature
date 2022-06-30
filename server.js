@@ -36,20 +36,20 @@ app.set('view engine', 'ejs');
 
 
 // database mongodb connection
-async function main() {
-    try {
-        await client.connect();
+// async function main() {
+//     try {
+//         await client.connect();
 
-        await listDatabases(client);
-    } catch (e) {
-        console.error(e);
-    } finally {
-        await client.close()
-        console.log('succes');
-    }
-}
+//         await listDatabases(client);
+//     } catch (e) {
+//         console.error(e);
+//     } finally {
+//         await client.close()
+//         console.log('succes');
+//     }
+// }
 
-main().catch(console.error);
+// main().catch(console.error);
 
 
 
