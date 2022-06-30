@@ -1,5 +1,6 @@
-# Block-Tech-Feature
+# FestiFinder
 Repository voor de individuele opdracht binnen blok tech.
+![festifinder-home](https://user-images.githubusercontent.com/94388546/176566208-7f6c7ce9-64fb-4617-9a7a-b2fe6c68b870.jpg)
 
 Mijn concept gaat over het vinden van festivals/evenementen op basis van je voorkeuren.
 
